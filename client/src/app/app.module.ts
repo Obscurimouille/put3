@@ -40,6 +40,7 @@ import { CustomSnackbarComponent } from './view/global/custom-snackbar/custom-sn
 import { LayoutEditorComponent } from './view/dashboard/layout-editor/layout-editor.component';
 import { ButtonRaisedComponent } from './view/global/buttons/button-raised/button-raised.component';
 import { ResourceBrowserModal } from './view/dialogs/resource-browser/resource-browser.modal';
+import { NotificationsBoardComponent } from './view/master-dashboard/notifications-board/notifications-board.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { ResourceBrowserModal } from './view/dialogs/resource-browser/resource-b
     AssetsGalleryComponent,
     FileCardComponent,
     DragDropFileUploadDirective,
+    NotificationsBoardComponent,
     ContextMenuComponent,
     CustomSnackbarComponent,
     LayoutEditorComponent,

@@ -39,6 +39,11 @@
                     [target]="target"
                     [disabled]="!fools.length || target == null"
                 ></app-layout-editor>
+
+                <app-notifications-board *ngIf="selectedItem.title.toLowerCase() == 'notifications'"
+                    [target]="target"
+                    [disabled]="!fools.length || target == null"
+                ></app-notifications-board>
             </div>
         </div>
     </div>
