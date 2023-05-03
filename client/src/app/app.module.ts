@@ -41,6 +41,7 @@ import { LayoutEditorComponent } from './view/dashboard/layout-editor/layout-edi
 import { ButtonRaisedComponent } from './view/global/buttons/button-raised/button-raised.component';
 import { ResourceBrowserModal } from './view/dialogs/resource-browser/resource-browser.modal';
 import { NotificationsBoardComponent } from './view/master-dashboard/notifications-board/notifications-board.component';
+import { ButtonSmallComponent } from './view/global/buttons/button-small/button-small.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,9 @@ import { NotificationsBoardComponent } from './view/master-dashboard/notificatio
     CustomSnackbarComponent,
     LayoutEditorComponent,
     ButtonRaisedComponent,
-    ResourceBrowserModal
+    ResourceBrowserModal,
+    NotificationsBoardComponent,
+    ButtonSmallComponent
   ],
     imports: [
         BrowserModule,

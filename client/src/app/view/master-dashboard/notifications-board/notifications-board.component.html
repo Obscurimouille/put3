@@ -4,11 +4,11 @@
       <div class="template">
         <div class="image">
           <div class="icon-menu">
-            <button class="import menu-item">
+            <button class="import menu-item" (click)="importIcon()">
               <img class="menu-item-icon" src="assets/icons/download.png" alt="">
               <span>Import</span>
             </button>
-            <button class="gallery menu-item">
+            <button class="gallery menu-item" (click)="browseGallery()">
               <img class="menu-item-icon" src="assets/icons/photo-gallery.png" alt="">
               <span>Gallery</span>
             </button>
@@ -23,6 +23,11 @@
             <textarea class="message-input" maxlength="100" placeholder="Message"></textarea>
           </div>
         </div>
+      </div>
+
+      <div class="buttons">
+        <app-button-small class="" [title]="'Test'" (onClick)="test()"></app-button-small>
+        <app-button-small class="" [title]="'Send'" (onClick)="send()"></app-button-small>
       </div>
     </div>
     <div class="saved">
