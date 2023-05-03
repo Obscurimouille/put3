@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class NotificationsService {
 
-  private _permission: string = '';
+  private _permission: string = 'default';
 
   constructor() {}
 
@@ -27,8 +27,9 @@ export class NotificationsService {
 
   private checkPermission() {
     return new Promise<boolean>(async (resolve, reject) => {
+      if (this.permission === 'granted') return resolve(true);
       this.getPermission().then((permission: string) => {
-        resolve(permission == 'granted');
+        resolve(permission === 'granted');
       });
     })
   }
@@ -37,9 +38,7 @@ export class NotificationsService {
     // Check permissions
     if (!await this.checkPermission()) return;
 
-    const notification = new Notification(title, {
-      body: message,
-      icon: icon
-    });
+    // Create notification
+    const notification = new Notification(title);
   }
 }

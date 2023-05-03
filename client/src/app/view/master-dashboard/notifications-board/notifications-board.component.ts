@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NotificationsService } from 'src/app/services/notifications-service/notifications.service';
+import { WebSocketService } from 'src/app/services/websocket-service/websocket.service';
 
 @Component({
   selector: 'app-notifications-board',
@@ -9,7 +11,11 @@ export class NotificationsBoardComponent implements OnInit {
   @Input() target!: any;
   @Input() disabled: boolean = false;
 
-  constructor() {}
+  icon: string = '';
+  title: string = '';
+  message: string = '';
+
+  constructor(private notification: NotificationsService, private websocket: WebSocketService) {}
 
   ngOnInit(): void {}
 
@@ -22,10 +28,18 @@ export class NotificationsBoardComponent implements OnInit {
   }
 
   test() {
-    console.log('test');
+    this.notification.create(this.title, this.message, this.icon);
   }
 
   send() {
-    console.log('send');
+    this.websocket.socket.emit('action', {
+      target: this.target,
+      action: {
+        type: 'notification',
+        title: this.title,
+        message: this.message,
+        icon: this.icon,
+      }
+    });
   }
 }

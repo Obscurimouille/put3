@@ -17,17 +17,17 @@
         </div>
         <div class="texts">
           <div class="title">
-            <input class="title-input" type="text" value="" placeholder="Titre" maxlength="24">
+            <input class="title-input" type="text" [(ngModel)]="title" maxlength="26" placeholder="Titre">
           </div>
           <div class="message">
-            <textarea class="message-input" maxlength="100" placeholder="Message"></textarea>
+            <textarea class="message-input" [(ngModel)]="message" maxlength="140" placeholder="Message"></textarea>
           </div>
         </div>
       </div>
 
       <div class="buttons">
-        <app-button-small class="" [title]="'Test'" (onClick)="test()"></app-button-small>
-        <app-button-small class="" [title]="'Send'" (onClick)="send()"></app-button-small>
+        <app-button-small [title]="'Preview'" (onClick)="test()"></app-button-small>
+        <app-button-small [title]="'Send'" (onClick)="send()"></app-button-small>
       </div>
     </div>
     <div class="saved">
