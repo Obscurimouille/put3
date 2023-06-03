@@ -1,0 +1,18 @@
+<div class="notification" [ngClass]="[theme]">
+    <!-- -------------------------------- IMAGE -------------------------------- -->
+    <app-editable-image [image]="data.image" (change)="imageChanged($event)"></app-editable-image>
+
+    <!-- -------------------------------- BODY --------------------------------- -->
+    <div class="body">
+        <app-editable-image [image]="data.icon" (change)="iconChanged($event)"></app-editable-image>
+
+        <div class="texts">
+            <div class="title">
+                <input class="title-input" [ngClass]="[theme] "type="text" [(ngModel)]="data.title" maxlength="48" placeholder="Titre">
+            </div>
+            <div class="message">
+                <textarea class="message-input" [ngClass]="[theme]" [(ngModel)]="data.message" maxlength="140" placeholder="Message"></textarea>
+            </div>
+        </div>
+    </div>
+</div>

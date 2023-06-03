@@ -1,0 +1,14 @@
+<div class="image-container">
+    <div class="menu">
+        <button class="menu-item import" (click)="import()">
+            <img class="menu-item-icon" src="assets/icons/download.png" alt="">
+            <span>Import</span>
+        </button>
+        <button class="menu-item gallery" (click)="browse()">
+            <img class="menu-item-icon" src="assets/icons/photo-gallery.png" alt="">
+            <span>Gallery</span>
+        </button>
+    </div>
+
+    <img class="image" *ngIf="image" [src]="apiUrl + '/' + image"/>
+</div>

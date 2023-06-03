@@ -59,6 +59,11 @@ const role = (socket) => {
  */
 const action = (socket) => {
     socket.on("action", (data) => {
+        if (!data.target) {
+            console.log("[!] No target specified");
+            return;
+        }
+
         console.log("[-] Action from " + socket.id + " to " + data.target.id);
         Socket.update.action(data);
     });

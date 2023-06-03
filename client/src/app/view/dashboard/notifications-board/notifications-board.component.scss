@@ -1,0 +1,74 @@
+@import '~src/styles.scss';
+
+.notification-board {
+    @extend %dashboard-page;
+    box-sizing: border-box;
+}
+
+.content {
+    flex: 1 1 auto;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+}
+
+.editor {
+    width: 75%;
+    height: 100%;
+
+    border: 3px solid rgb(49, 49, 89);
+    border-radius: 14px;
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+app-notification-card {
+    width: 75%;
+}
+
+.no-target {
+    width: 75%;
+    height: 100%;
+
+    border: 3px solid rgb(49, 49, 89);
+    border-radius: 14px;
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @extend %font-base;
+    letter-spacing: 0.1rem;
+    color: rgb(197, 197, 197);
+    font-size: 1.4rem;
+}
+
+.toolbar {
+    flex: 1 1 auto;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: calc(1rem - 4px);
+
+    padding: 0 4px 100px 0;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: calc(1rem - 4px);
+}
+
+app-button-raised {
+    margin-bottom: 4px;
+}

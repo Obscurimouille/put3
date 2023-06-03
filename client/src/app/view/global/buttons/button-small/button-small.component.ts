@@ -7,7 +7,8 @@ import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 })
 export class ButtonSmallComponent implements OnInit {
 
-  @Input() title!: string;
+  @Input() title?: string;
+  @Input() icon?: string;
   @Input() disabled: boolean = false;
   @Output() onClick: EventEmitter<any> = new EventEmitter<any>();
 

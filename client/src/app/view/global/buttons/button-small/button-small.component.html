@@ -1,1 +1,4 @@
-<button (click)="click($event)" [disabled]="disabled">{{title}}</button>
+<button (click)="click($event)" [disabled]="disabled">
+    <p class="title" *ngIf="title">{{title}}</p>
+    <img class="icon" *ngIf="icon" [src]="'assets/icons/' + icon"/>
+</button>

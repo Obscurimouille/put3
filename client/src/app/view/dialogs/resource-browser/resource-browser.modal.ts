@@ -14,7 +14,12 @@ export class ResourceBrowserModal implements OnInit {
 
     type: ResourceType | null = null;
 
-    constructor(@Inject(MAT_DIALOG_DATA) private data: any, private dialogRef: MatDialogRef<ResourceBrowserModal>, public resourceService: ResourcesService, public selectionService: SelectionService) {}
+    constructor(
+        @Inject(MAT_DIALOG_DATA) private data: any,
+        private dialogRef: MatDialogRef<ResourceBrowserModal>,
+        public resourceService: ResourcesService,
+        public selectionService: SelectionService
+    ) {}
 
     ngOnInit(): void {
         if (this.data) this.type = this.data.type || null;

@@ -12,6 +12,10 @@ export const dashboardNavbarMenus: Menu[] = [
             icon: 'speaker.png',
         },
         {
+            title: DashboardPage.Notifications,
+            icon: 'bell.png',
+        },
+        {
             title: DashboardPage.Resources,
             icon: 'photo-gallery.png',
         },

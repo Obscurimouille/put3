@@ -1,40 +1,55 @@
 button {
-  padding: 0.25rem 0.65rem;
+    padding: 0;
 
-  color: white;
-  font-family: Roboto;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 16px;
-  letter-spacing: 0.1rem;
-  line-height: 1.75rem;
+    max-height: 2.5rem;
 
-  border: 2px solid white;
-  border-radius: 0.5rem;
-  outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  background-color: transparent;
+    border: 2px solid white;
+    border-radius: 0.5rem;
+    outline: none;
 
-  cursor: pointer;
+    background-color: transparent;
 
-  transition: all 0.12s ease-in-out;
+    cursor: pointer;
 
-  &:hover {
-    $color: rgb(201, 201, 201);
-    border: 2px solid $color;
-    color: $color;
-  }
+    transition: all 0.12s ease-in-out;
 
-  &:active {
-    $color: rgb(169, 169, 169);
-    border: 2px solid $color;
-    color: $color;
-  }
+    .title {
+        margin: 0.25rem 0.65rem;
 
-  &:disabled {
-    $color: rgb(146, 146, 146);
-    cursor: not-allowed;
-    border: 2px solid $color;
-    color: $color;
-  }
+        color: white;
+        font-family: Roboto;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 16px;
+        letter-spacing: 0.1rem;
+        line-height: 1.75rem;
+    }
+
+    .icon {
+        width: 24px;
+        margin: .35rem;
+    }
+
+    &:hover {
+        $color: rgb(201, 201, 201);
+        border: 2px solid $color;
+        color: $color;
+    }
+
+    &:active {
+        $color: rgb(169, 169, 169);
+        border: 2px solid $color;
+        color: $color;
+    }
+
+    &:disabled {
+        $color: rgb(146, 146, 146);
+        cursor: not-allowed;
+        border: 2px solid $color;
+        color: $color;
+    }
 }

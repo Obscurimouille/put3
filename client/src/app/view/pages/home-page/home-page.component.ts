@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Script } from 'src/app/enums/assets/scrips';
 import { Role } from 'src/app/enums/role';
 import { AssetsService } from 'src/app/services/assets-service/assets.service';
-import { WebSocketService } from 'src/app/services/websocket-service/websocket.service';
 
 @Component({
     selector: 'app-home-page',

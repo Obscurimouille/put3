@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DesktopComponent } from './view/fool/desktop/desktop.component';
@@ -40,8 +39,10 @@ import { CustomSnackbarComponent } from './view/global/custom-snackbar/custom-sn
 import { LayoutEditorComponent } from './view/dashboard/layout-editor/layout-editor.component';
 import { ButtonRaisedComponent } from './view/global/buttons/button-raised/button-raised.component';
 import { ResourceBrowserModal } from './view/dialogs/resource-browser/resource-browser.modal';
-import { NotificationsBoardComponent } from './view/master-dashboard/notifications-board/notifications-board.component';
+import { NotificationsBoardComponent } from './view/dashboard/notifications-board/notifications-board.component';
 import { ButtonSmallComponent } from './view/global/buttons/button-small/button-small.component';
+import { NotificationCardComponent } from './view/cards/notification-card/notification-card.component';
+import { EditableImageComponent } from './view/global/images/editable-image/editable-image.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,9 @@ import { ButtonSmallComponent } from './view/global/buttons/button-small/button-
     ButtonRaisedComponent,
     ResourceBrowserModal,
     NotificationsBoardComponent,
-    ButtonSmallComponent
+    ButtonSmallComponent,
+    NotificationCardComponent,
+    EditableImageComponent
   ],
     imports: [
         BrowserModule,

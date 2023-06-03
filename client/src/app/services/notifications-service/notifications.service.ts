@@ -1,44 +1,67 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class NotificationsService {
+    private _permission: string = 'default';
 
-  private _permission: string = 'default';
+    constructor() {}
 
-  constructor() {}
+    public init() {
+        this.askPermission();
+    }
 
-  public init() {
-    this.getPermission();
-  }
+    public get permission() {
+        return this._permission;
+    }
 
-  public get permission() {
-    return this._permission;
-  }
+    private askPermission(): Promise<NotificationPermission> {
+        return new Promise((resolve, reject) => {
+            // This browser does not support desktop notifications
+            if (!('Notification' in window)) {
+                return reject('Unsupported');
+            }
+            // Notification permission already granted
+            if (Notification.permission === 'granted') {
+                return resolve(Notification.permission);
+            }
+            // Request permission
+            if (Notification.permission !== 'denied') {
+                Notification.requestPermission().then((permission) => {
+                    // Notification permission granted
+                    if (permission === 'granted') return resolve(permission);
+                    // Notification permission denied
+                    return reject('Denied');
+                });
+            }
 
-  private getPermission() {
-    return new Promise<string>(async (resolve, reject) => {
-      const permission = await Notification.requestPermission();
-      this._permission = permission;
-      resolve(permission);
-    });
-  }
+            // Permission denied
+            reject('Denied');
+        });
+    }
 
-  private checkPermission() {
-    return new Promise<boolean>(async (resolve, reject) => {
-      if (this.permission === 'granted') return resolve(true);
-      this.getPermission().then((permission: string) => {
-        resolve(permission === 'granted');
-      });
-    })
-  }
+    private checkPermission() {
+        return Notification.permission === 'granted';
+    }
 
-  public async create(title: string, message: string = '', icon: string = '') {
-    // Check permissions
-    if (!await this.checkPermission()) return;
+    public create(title: string, message: string = '', icon: string = '', image: string = '', duration: number = 5000) {
+        // Check permissions
+        if (!this.checkPermission()) return;
 
-    // Create notification
-    const notification = new Notification(title);
-  }
+        // Create notification
+        const notification = new Notification(title, {
+            body: message,
+            icon,
+            image,
+            requireInteraction: duration == 0,
+        });
+
+        // Close notification after duration
+        if (duration) {
+            setTimeout(() => {
+                notification.close();
+            }, duration);
+        }
+    }
 }

@@ -1,0 +1,30 @@
+<div class="notification-board">
+    <div class="content" #content>
+        <div class="editor" *ngIf="target" [ngStyle]="{'aspectRatio': target.window.ratio}" #editor>
+            <app-notification-card
+                [data]="notification"
+                [theme]="target.browser.theme"
+            ></app-notification-card>
+        </div>
+
+        <div class="no-target" *ngIf="!target">
+            Select a fool
+        </div>
+
+        <div class="toolbar">
+            <div class="upper buttons">
+                <app-button-raised (click)="reset()" [disabled]="!target">
+                    Reset
+                </app-button-raised>
+            </div>
+            <div class="lower buttons">
+                <app-button-raised (click)="preview()" [disabled]="!target">
+                    Preview
+                </app-button-raised>
+                <app-button-raised (click)="send()" [disabled]="!target">
+                    Send
+                </app-button-raised>
+            </div>
+        </div>
+    </div>
+</div>

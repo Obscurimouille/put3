@@ -8,6 +8,8 @@ import { ResourceType } from 'src/app/enums/resources/type';
 import { ResourceDirectory } from 'src/app/enums/resources/directory';
 import { ResourceSet } from 'src/app/types/resources/data-set';
 import { WebSocketService } from '../websocket-service/websocket.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ResourceBrowserModal } from 'src/app/view/dialogs/resource-browser/resource-browser.modal';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +20,7 @@ export class ResourcesService {
     private routeUrl = this.apiUrl + '/resources';
     private resources: ResourceSet = {};
 
-    constructor(private http: HttpClient, private websocket: WebSocketService) {
+    constructor(private dialog: MatDialog, private http: HttpClient, private websocket: WebSocketService) {
         this.update();
 
         this.websocket.socket.on('event', (data: any) => {
@@ -167,6 +169,18 @@ export class ResourcesService {
             .subscribe({
                 next: (data: any) => resolve(data),
                 error: (error: any) => reject(error)
+            });
+        });
+    }
+
+    public browse(type: ResourceType | null = null) {
+        return new Promise((resolve, reject) => {
+            const dialogRef = this.dialog.open(ResourceBrowserModal, {
+                data: { type }
+            });
+
+            dialogRef.afterClosed().subscribe((data: FileData | FileData[] | undefined) => {
+                resolve(data);
             });
         });
     }

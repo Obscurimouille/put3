@@ -11,6 +11,6 @@
     <div *ngIf="selected" class="selection"></div>
     <div class="shadow"></div>
     <div class="browser">
-        <img [src]="browser.toIcon(fool.browser)">
+        <img *ngIf="fool.browser" [src]="browser.toIcon(fool.browser.name)">
     </div>
 </div>

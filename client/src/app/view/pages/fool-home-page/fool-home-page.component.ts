@@ -2,7 +2,6 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { CursorService } from 'src/app/services/cursor-service/cursor.service';
 import { AudioService } from 'src/app/services/audio-service/audio.service';
 import { WebSocketService } from 'src/app/services/websocket-service/websocket.service';
-import { DesktopService } from 'src/app/services/desktop-service/desktop.service';
 import { environment } from 'src/environments/environment';
 import { NotificationsService } from 'src/app/services/notifications-service/notifications.service';
 import { WindowService } from 'src/app/services/window-service/window.service';
@@ -38,19 +37,16 @@ export class FoolHomePageComponent implements OnInit {
         public cursorService: CursorService,
         private websocket: WebSocketService,
         private audio: AudioService,
-        private desktopService: DesktopService,
-        public hitboxService: HitboxService,
-        private audio: AudioService,
-        private notification: NotificationService
+        private notification: NotificationsService
     ) {}
-    
+
     ngOnInit(): void {
         // Update role if needed
         this.websocket.declare(Role.Fool, this.preferences.get());
 
         // Send window size and browser infos
         this.websocket.socket.emit('infos', {
-            browser: this.browser.get(),
+            browser: this.browser.getInfos(),
             window: this.windowService.getWindowSize(),
         });
 
@@ -64,10 +60,7 @@ export class FoolHomePageComponent implements OnInit {
         });
 
         this.websocket.socket.on('name', (data: any) => {
-            console.log(data);
             if (data.target.id !== this.websocket.id) return;
-            console.log("data");
-
             this.preferences.setName(data.name);
         });
 
@@ -103,9 +96,16 @@ export class FoolHomePageComponent implements OnInit {
                 if ('stop' in data.action && data.action.stop) this.audio.stopAll();
                 else if ('track' in data.action) this.audio.play(this.apiUrl + '/' + data.action.track.href, volume);
                 break;
-            
+
             case 'notification':
-                this.notification.create(data.action.title, data.action.message, data.action.icon);
+                console.log(this.apiUrl + '/' + data.action.icon)
+                console.log(this.apiUrl + '/' + data.action.image)
+                this.notification.create(
+                    data.action.title,
+                    data.action.message,
+                    data.action.icon ? (this.apiUrl + '/' + data.action.icon) : '',
+                    data.action.image ? (this.apiUrl + '/' + data.action.image) : ''
+                );
                 break;
 
             default:

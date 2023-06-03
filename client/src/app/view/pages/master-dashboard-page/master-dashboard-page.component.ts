@@ -16,7 +16,7 @@ import { MenuItem } from 'src/app/types/menu-item';
 export class MasterDashboardPageComponent implements OnInit {
 
     selectedItem: MenuItem = {
-        title: DashboardPage.Layout
+        title: DashboardPage.Notifications
     };
     fools: Fool[] = [];
     target: Fool | undefined = undefined;

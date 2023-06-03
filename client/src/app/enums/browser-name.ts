@@ -1,4 +1,4 @@
-export enum Browser {
+export enum BrowserName {
     Edge = 'edge',
     Opera = 'opera',
     Chrome = 'chrome',

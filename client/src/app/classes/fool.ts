@@ -1,13 +1,13 @@
 import { Window } from "../types/window";
 import { Layout } from "../types/layout";
-import { Browser } from "../enums/browser";
+import { BrowserInfos } from "../types/browser-infos";
 
 export class Fool {
 
     public id: string;
     public name: string;
     public window: Window;
-    public browser: Browser;
+    public browser: BrowserInfos;
     public layout: Layout = {
         desktop: {
             image: undefined

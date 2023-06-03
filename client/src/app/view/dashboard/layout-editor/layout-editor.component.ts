@@ -9,6 +9,8 @@ import { environment } from 'src/environments/environment';
 import { Fool } from 'src/app/classes/fool';
 import { Hitbox } from 'src/app/classes/hitbox';
 import { FoolService } from 'src/app/services/fool-service/fool.service';
+import { ResourcesService } from 'src/app/services/resources-service/resources.service';
+import { FileData } from 'src/app/types/resources/file-data';
 
 @Component({
     selector: 'app-layout-editor',
@@ -26,7 +28,13 @@ export class LayoutEditorComponent implements OnInit {
     apiUrl = environment.serverUrl + environment.apiPath;
     defaultDesktopImage = environment.defaultDesktopImage;
 
-    constructor(private foolService: FoolService, private dialog: MatDialog, private websocket: WebSocketService, private desktopService: DesktopService, public hitboxService: HitboxService) {}
+    constructor(
+        private foolService: FoolService,
+        private dialog: MatDialog,
+        private desktopService: DesktopService,
+        public hitboxService: HitboxService,
+        private resources: ResourcesService
+    ) {}
 
     ngOnInit(): void {
         // Get desktop background image
@@ -46,11 +54,7 @@ export class LayoutEditorComponent implements OnInit {
     }
 
     changeBackground() {
-        const dialogRef = this.dialog.open(ResourceBrowserModal, {
-            data: { type: ResourceType.Image }
-        });
-
-        dialogRef.afterClosed().subscribe(image => {
+        this.resources.browse(ResourceType.Image).then((image: any) => {
             if (!image) return;
             this.target!.layout.desktop.image = image.href;
         });
